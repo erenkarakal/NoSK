@@ -1,0 +1,15 @@
+import:
+  java.lang.Class
+  java.lang.reflect.Field
+  ch.njol.skript.Skript
+
+effect punish skript:
+  trigger:
+    set {_class} to Skript.class
+    loop ("conditions", "effects", "statements", "sections", "expressions", "structures"):
+      set {_field} to try {_class}.getDeclaredField(loop-value)
+      if last java exception is set:
+        send "&7[&cNoSK&7] &fCouldn't find the field for &e%loop-value%&f, therefore it can't be deleted." to console
+        continue
+      {_field}.setAccessible(true)
+      {_field}.get(null).clear()
