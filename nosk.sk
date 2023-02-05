@@ -1,6 +1,4 @@
 import:
-  java.lang.Class
-  java.lang.reflect.Field
   ch.njol.skript.Skript
 
 effect punish skript:
